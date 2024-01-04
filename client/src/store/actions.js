@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const createPost = ({ commit }, post) => {
   return axios
-    .post('https://localhost:3000/api/posts', post)
+    .post('http://localhost:3000/api/posts', post)
     .then(({ data }) => {
       commit('SET_POST', data)
     })

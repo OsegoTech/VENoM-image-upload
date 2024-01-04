@@ -37,6 +37,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import store from '../store/index.js';
 
 const post = ref({
   title: '',
@@ -55,15 +56,17 @@ const onSubmit = (e) => {
   formData.append('content', post.value.content)
   formData.append('image', post.value.image)
 
-  fetch('http://localhost:3000/api/posts', {
-    method: 'POST',
-    body: formData
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((err) => console.log(err))
+  store.dispatch("createPost", formData)
+
+  // fetch('http://localhost:3000/api/posts', {
+  //   method: 'POST',
+  //   body: formData
+  // })
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data)
+  //   })
+  //   .catch((err) => console.log(err))
 }
 </script>
 
