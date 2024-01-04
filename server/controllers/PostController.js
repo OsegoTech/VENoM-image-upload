@@ -15,7 +15,8 @@ const upload = multer({ storage });
 
 const createPost = expressAsyncHandler(async (req, res) => {
   const { title, content } = req.body;
-  const image = req.file.path;
+  const image = req.file.filename;
+  console.log(image);
   try {
     if (!title || !content || !image) {
       res.status(400).json({
@@ -43,4 +44,20 @@ const createPost = expressAsyncHandler(async (req, res) => {
   }
 });
 
-export { createPost, upload };
+const getPosts = expressAsyncHandler(async (req, res) => {
+  try {
+    const posts = await Post.find({});
+    res.status(200).json({
+      status: "success",
+      message: "Posts retrieved successfully",
+      posts,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+});
+
+export { createPost, upload, getPosts };

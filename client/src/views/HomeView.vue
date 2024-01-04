@@ -14,7 +14,9 @@ import { RouterLink } from 'vue-router'
     </div>
     <div>
       <RouterLink to="/upload">Upload an Image</RouterLink>
-      <RouterLink to="/view">View Images</RouterLink>
+      <RouterLink to="/posts">View Images</RouterLink>
     </div>
   </main>
 </template>
+
+

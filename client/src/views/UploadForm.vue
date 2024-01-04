@@ -37,7 +37,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import store from '../store/index.js';
+import store from '../store/index.js'
+import router from '@/router/index.js'
 
 const post = ref({
   title: '',
@@ -56,7 +57,8 @@ const onSubmit = (e) => {
   formData.append('content', post.value.content)
   formData.append('image', post.value.image)
 
-  store.dispatch("createPost", formData)
+  store.dispatch('createPost', formData)
+  router.push('/posts')
 
   // fetch('http://localhost:3000/api/posts', {
   //   method: 'POST',

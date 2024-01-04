@@ -1,5 +1,6 @@
 const state = {
-  post: []
+  post: {},
+  posts: []
 }
 
 export default state
